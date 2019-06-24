@@ -1,0 +1,30 @@
+{
+	"name": "spotify-clone",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"scripts": {
+		"dev": "parcel src/index.html",
+		"build": "parcel build src/index.html",
+		"start": "npm run build && live-server dist"
+	},
+	"keywords": [],
+	"author": "Rafael Aquino",
+	"dependencies": {
+		"@babel/core": "^7.4.4",
+		"live-server": "^1.2.1",
+		"parcel-bundler": "^1.12.3",
+		"react": "^16.8.6",
+		"react-dom": "^16.8.6"
+	},
+	"devDependencies": {
+		"babel-eslint": "^10.0.1",
+		"eslint": "^5.16.0",
+		"eslint-config-standard": "^12.0.0",
+		"eslint-plugin-import": "^2.17.2",
+		"eslint-plugin-node": "^9.0.1",
+		"eslint-plugin-promise": "^4.1.1",
+		"eslint-plugin-react": "^7.13.0",
+		"eslint-plugin-standard": "^4.0.0"
+	}
+}
