@@ -2,10 +2,12 @@ import React, { Fragment } from 'react'
 
 import GlobalStyle from './syles/global'
 
+import Sidebar from './components/Sidebar'
+
 const App = () => (
 	<Fragment>
 		<GlobalStyle />
-		<div>Hello</div>
+		<Sidebar />
 	</Fragment>
 )
 
