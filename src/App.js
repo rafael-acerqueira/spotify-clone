@@ -1,14 +1,20 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
 import GlobalStyle from './syles/global'
 
 import Sidebar from './components/Sidebar'
+import Player from './components/Player'
+
+import { Wrapper, Container } from './syles/components'
 
 const App = () => (
-	<Fragment>
+	<Wrapper>
+		<Container>
+			<Sidebar />
+		</Container>
 		<GlobalStyle />
-		<Sidebar />
-	</Fragment>
+		<Player />
+	</Wrapper>
 )
 
 export default App
