@@ -13,6 +13,7 @@ export const Container = styled.div`
 export const Content = styled.div`
 	flex: 1;
 	display: flex;
+	color: #fff;
 	flex-direction: column;
 
 	background: linear-gradient(to bottom, #414141 0%, #181818 100%), transparent;

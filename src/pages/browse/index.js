@@ -7,7 +7,7 @@ const Browse = () => (
 		<Title>Navegar</Title>
 
 		<List>
-			<PlayList href="">
+			<PlayList to="/playlists/1">
 				<img
 					src="http://portaldoguigui.com.br/wp-content/uploads/2018/08/37500557_2090114051047574_3731377190588121088_n-300x300.jpg"
 					alt=""
@@ -15,7 +15,7 @@ const Browse = () => (
 				<strong>Forró</strong>
 				<p>Essa é pra dançar</p>
 			</PlayList>
-			<PlayList href="">
+			<PlayList to="/playlists/1">
 				<img
 					src="http://portaldoguigui.com.br/wp-content/uploads/2018/08/37500557_2090114051047574_3731377190588121088_n-300x300.jpg"
 					alt=""
@@ -23,7 +23,7 @@ const Browse = () => (
 				<strong>Forró</strong>
 				<p>Essa é pra dançar</p>
 			</PlayList>
-			<PlayList href="">
+			<PlayList to="/playlists/1">
 				<img
 					src="http://portaldoguigui.com.br/wp-content/uploads/2018/08/37500557_2090114051047574_3731377190588121088_n-300x300.jpg"
 					alt=""
@@ -31,7 +31,7 @@ const Browse = () => (
 				<strong>Forró</strong>
 				<p>Essa é pra dançar</p>
 			</PlayList>
-			<PlayList href="">
+			<PlayList to="/playlists/1">
 				<img
 					src="http://portaldoguigui.com.br/wp-content/uploads/2018/08/37500557_2090114051047574_3731377190588121088_n-300x300.jpg"
 					alt=""
@@ -39,7 +39,7 @@ const Browse = () => (
 				<strong>Forró</strong>
 				<p>Essa é pra dançar</p>
 			</PlayList>
-			<PlayList href="">
+			<PlayList to="/playlists/1">
 				<img
 					src="http://portaldoguigui.com.br/wp-content/uploads/2018/08/37500557_2090114051047574_3731377190588121088_n-300x300.jpg"
 					alt=""
