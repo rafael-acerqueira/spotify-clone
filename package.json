@@ -12,13 +12,20 @@
 	"author": "Rafael Aquino",
 	"dependencies": {
 		"@babel/core": "^7.4.4",
+		"@redux-saga/is": "^1.0.1",
 		"live-server": "^1.2.1",
 		"parcel-bundler": "^1.12.3",
 		"rc-slider": "^8.6.13",
 		"react": "^16.8.6",
 		"react-dom": "^16.8.6",
+		"react-redux": "^7.1.0",
 		"react-router-dom": "^5.0.1",
+		"reactotron-core-client": "^2.5.0",
 		"reactotron-react-js": "^3.3.2",
+		"reactotron-redux": "^3.1.1",
+		"reactotron-redux-saga": "^4.2.2",
+		"redux": "^4.0.1",
+		"redux-saga": "^1.0.1",
 		"styled-components": "^4.3.2"
 	},
 	"devDependencies": {
