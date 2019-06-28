@@ -8,8 +8,10 @@ import { Creators as PlaylistActions } from '../../store/ducks/playlists'
 
 import { Container, NewPlayList, AddPlayListImage, Nav } from './styles'
 
+import Loading from '../Loading'
+
 const Sidebar = () => {
-	const playlists = useSelector(state => state.playlists.data)
+	const playlists = useSelector(state => state.playlists)
 	const dispatch = useDispatch()
 
 	useEffect(() => {
@@ -62,8 +64,9 @@ const Sidebar = () => {
 				<Nav>
 					<li>
 						<span>Playlists</span>
+						{playlists.loading && <Loading />}
 					</li>
-					{playlists.map(playlist => (
+					{playlists.data.map(playlist => (
 						<li key={playlist.id}>
 							<Link to={`/playlists/${playlist.id}`}>{playlist.title}</Link>
 						</li>
