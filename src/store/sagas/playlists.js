@@ -5,8 +5,8 @@ import { Creators as PlaylistActions } from '../ducks/playlists'
 
 export function * getPlaylists () {
 	try {
-		const response = yield call(api.get, '/playlists')
-		yield put(PlaylistActions.getPlaylistSuccess(response))
+		const { data } = yield call(api.get, '/playlists')
+		yield put(PlaylistActions.getPlaylistSuccess(data))
 	} catch (error) {
 		console.log(error)
 	}
