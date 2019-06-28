@@ -13,6 +13,7 @@
 	"dependencies": {
 		"@babel/core": "^7.4.4",
 		"@redux-saga/is": "^1.0.1",
+		"axios": "^0.19.0",
 		"live-server": "^1.2.1",
 		"parcel-bundler": "^1.12.3",
 		"rc-slider": "^8.6.13",
