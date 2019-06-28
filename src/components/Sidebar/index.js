@@ -11,15 +11,17 @@ import { Container, NewPlayList, AddPlayListImage, Nav } from './styles'
 const Sidebar = () => {
 	const playlists = useSelector(state => state.playlists.data)
 	const dispatch = useDispatch()
+
 	useEffect(() => {
 		dispatch(PlaylistActions.getPlaylistRequest())
 	}, [])
+
 	return (
 		<Container>
 			<div>
 				<Nav main>
 					<li>
-						<a href="">Navegar</a>
+						<Link to="/">Navegar</Link>
 					</li>
 					<li>
 						<a href="">Rádio</a>
