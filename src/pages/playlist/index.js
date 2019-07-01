@@ -25,8 +25,8 @@ const Playlist = ({ match }) => {
 	const renderDetails = () => {
 		const playlist = playlistDetails.data
 
-		const loadSong = song => {
-			dispatch(PlayerActions.loadSong(song))
+		const loadSong = (song, list) => {
+			dispatch(PlayerActions.loadSong(song, list))
 		}
 
 		return (
@@ -64,7 +64,7 @@ const Playlist = ({ match }) => {
 							playlist.songs.map(song => (
 								<SongItem
 									key={song.id}
-									onDoubleClick={() => loadSong(song)}
+									onDoubleClick={() => loadSong(song, playlist.songs)}
 									onClick={() => setSelectSong(song.id)}
 									selected={song.id === selectedSong}
 									playing={currentSong && currentSong.id === song.id}

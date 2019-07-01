@@ -35,10 +35,22 @@ const Player = () => {
 		dispatch(PlayerActions.pauseSong())
 	}
 
+	const next = () => {
+		dispatch(PlayerActions.nextSong())
+	}
+
+	const prev = () => {
+		dispatch(PlayerActions.prevSong())
+	}
+
 	return (
 		<Container>
 			{!!player.currentSong && (
-				<Sound url={player.currentSong.file} playStatus={player.status} />
+				<Sound
+					url={player.currentSong.file}
+					playStatus={player.status}
+					onFinishedPlaying={next}
+				/>
 			)}
 			<Current>
 				{!!player.currentSong && (
@@ -60,7 +72,7 @@ const Player = () => {
 					<button>
 						<img src={ShuffleIcon} alt="shuffle" />
 					</button>
-					<button>
+					<button onClick={prev}>
 						<img src={BackwardIcon} alt="backward" />
 					</button>
 					{!!player.currentSong && player.status === Sound.status.PLAYING ? (
@@ -73,7 +85,7 @@ const Player = () => {
 						</button>
 					)}
 
-					<button>
+					<button onClick={next}>
 						<img src={ForwardIcon} alt="forward" />
 					</button>
 					<button>
