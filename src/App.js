@@ -7,6 +7,7 @@ import GlobalStyle from './syles/global'
 import Sidebar from './components/Sidebar'
 import Player from './components/Player'
 import Header from './components/Header'
+import ErrorBox from './components/ErrorBox'
 
 import { Wrapper, Container, Content } from './syles/components'
 
@@ -20,6 +21,7 @@ const App = () => (
 				<Container>
 					<Sidebar />
 					<Content>
+						<ErrorBox />
 						<Header />
 						<Routes />
 					</Content>
