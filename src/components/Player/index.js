@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { useSelector } from 'react-redux'
 import Slider from 'rc-slider'
 import Sound from 'react-sound'
@@ -29,14 +29,18 @@ const Player = () => {
 				<Sound url={player.currentSong.file} playStatus={player.status} />
 			)}
 			<Current>
-				<img
-					src="http://portaldoguigui.com.br/wp-content/uploads/2018/08/37500557_2090114051047574_3731377190588121088_n-300x300.jpg"
-					alt="cover"
-				/>
-				<div>
-					<span>Furunfa</span>
-					<small>Calcinha Preta</small>
-				</div>
+				{!!player.currentSong && (
+					<Fragment>
+						<img
+							src={player.currentSong.thumbnail}
+							alt={player.currentSong.title}
+						/>
+						<div>
+							<span>{player.currentSong.title}</span>
+							<small>{player.currentSong.author}</small>
+						</div>
+					</Fragment>
+				)}
 			</Current>
 
 			<Progress>
