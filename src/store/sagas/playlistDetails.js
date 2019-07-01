@@ -12,6 +12,8 @@ export function * getPlaylistDetails (action) {
 		)
 		yield put(PlaylistDetailsActions.getPlaylistDetailsSuccess(data))
 	} catch (error) {
-		yield put(ErrorActions.setError(error))
+		yield put(
+			ErrorActions.setError('Não foi possível obter os detalhes da Playlist')
+		)
 	}
 }

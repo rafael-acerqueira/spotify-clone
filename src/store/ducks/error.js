@@ -12,7 +12,7 @@ export default function playlists (state = INITIAL_STATE, action) {
 	switch (action.type) {
 	case Types.SET:
 		return { ...state, visible: true, message: action.payload.message }
-	case Types.GET_SUCCESS:
+	case Types.HIDE:
 		return { ...state, visible: false }
 	default:
 		return state

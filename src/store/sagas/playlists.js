@@ -9,6 +9,6 @@ export function * getPlaylists () {
 		const { data } = yield call(api.get, '/playlists')
 		yield put(PlaylistActions.getPlaylistSuccess(data))
 	} catch (error) {
-		yield put(ErrorActions.setError(error))
+		yield put(ErrorActions.setError('Não foi possível obter as playlists'))
 	}
 }
