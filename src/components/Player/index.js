@@ -25,6 +25,7 @@ import { Creators as PlayerActions } from '../../store/ducks/player'
 
 const Player = () => {
 	const player = useSelector(state => state.player)
+
 	const dispatch = useDispatch()
 
 	const play = () => {
@@ -43,6 +44,22 @@ const Player = () => {
 		dispatch(PlayerActions.prevSong())
 	}
 
+	const playing = e => {
+		dispatch(PlayerActions.playingSong(e))
+	}
+
+	const msToTime = duration => {
+		let seconds = parseInt((duration / 1000) % 60, 10)
+		const minutes = parseInt((duration / (1000 * 60)) % 60, 10)
+
+		seconds = seconds < 10 ? `0${seconds}` : seconds
+
+		return `${minutes}:${seconds}`
+	}
+
+	const position = msToTime(player.position)
+	const duration = msToTime(player.duration)
+
 	return (
 		<Container>
 			{!!player.currentSong && (
@@ -50,6 +67,7 @@ const Player = () => {
 					url={player.currentSong.file}
 					playStatus={player.status}
 					onFinishedPlaying={next}
+					onPlaying={e => playing(e)}
 				/>
 			)}
 			<Current>
@@ -93,7 +111,7 @@ const Player = () => {
 					</button>
 				</Controls>
 				<Time>
-					<span>2:35</span>
+					<span>{position}</span>
 					<ProgressSlider>
 						<Slider
 							railStyle={{ backgroundColor: '#404040', borderRadius: 10 }}
@@ -101,7 +119,7 @@ const Player = () => {
 							handleStyle={{ border: 0 }}
 						/>
 					</ProgressSlider>
-					<span>3:05</span>
+					<span>{duration}</span>
 				</Time>
 			</Progress>
 
