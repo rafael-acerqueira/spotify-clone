@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { Creators as PlaylistDetailsActions } from '../../store/ducks/playlistDetails'
 import { Creators as PlayerActions } from '../../store/ducks/player'
 
-import { Container, Header, SongList } from './styles'
+import { Container, Header, SongList, SongItem } from './styles'
 
 import ClockIcon from '../../assets/images/clock.svg'
 import AddIcon from '../../assets/images/plus.svg'
@@ -13,7 +13,10 @@ import Loading from '../../components/Loading'
 
 const Playlist = ({ match }) => {
 	const playlistDetails = useSelector(state => state.playlistDetails)
+	const currentSong = useSelector(state => state.player.currentSong)
 	const dispatch = useDispatch()
+
+	const [selectedSong, setSelectSong] = useState(null)
 
 	useEffect(() => {
 		dispatch(PlaylistDetailsActions.getPlaylistDetailsRequest(match.params.id))
@@ -59,7 +62,13 @@ const Playlist = ({ match }) => {
 							</tr>
 						) : (
 							playlist.songs.map(song => (
-								<tr key={song.id} onDoubleClick={() => loadSong(song)}>
+								<SongItem
+									key={song.id}
+									onDoubleClick={() => loadSong(song)}
+									onClick={() => setSelectSong(song.id)}
+									selected={song.id === selectedSong}
+									playing={currentSong && currentSong.id === song.id}
+								>
 									<td>
 										<img src={AddIcon} alt="adicionar" />
 									</td>
@@ -67,7 +76,7 @@ const Playlist = ({ match }) => {
 									<td>{song.author}</td>
 									<td>{song.album}</td>
 									<td>2:21</td>
-								</tr>
+								</SongItem>
 							))
 						)}
 					</tbody>
