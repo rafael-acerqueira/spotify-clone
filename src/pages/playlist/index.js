@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { Creators as PlaylistDetailsActions } from '../../store/ducks/playlistDetails'
+import { Creators as PlayerActions } from '../../store/ducks/player'
 
 import { Container, Header, SongList } from './styles'
 
@@ -20,6 +21,11 @@ const Playlist = ({ match }) => {
 
 	const renderDetails = () => {
 		const playlist = playlistDetails.data
+
+		const loadSong = song => {
+			dispatch(PlayerActions.loadSong(song))
+		}
+
 		return (
 			<Container>
 				<Header>
@@ -53,7 +59,7 @@ const Playlist = ({ match }) => {
 							</tr>
 						) : (
 							playlist.songs.map(song => (
-								<tr key={song.id}>
+								<tr key={song.id} onDoubleClick={() => loadSong(song)}>
 									<td>
 										<img src={AddIcon} alt="adicionar" />
 									</td>
