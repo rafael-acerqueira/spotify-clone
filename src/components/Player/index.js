@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import Slider from 'rc-slider'
 import Sound from 'react-sound'
 
@@ -17,12 +17,24 @@ import VolumeIcon from '../../assets/images/volume.svg'
 import ShuffleIcon from '../../assets/images/shuffle.svg'
 import BackwardIcon from '../../assets/images/backward.svg'
 import PlayIcon from '../../assets/images/play.svg'
-// import PauseIcon from '../../assets/images/pause.svg'
+import PauseIcon from '../../assets/images/pause.svg'
 import ForwardIcon from '../../assets/images/forward.svg'
 import RepeatIcon from '../../assets/images/repeat.svg'
 
+import { Creators as PlayerActions } from '../../store/ducks/player'
+
 const Player = () => {
 	const player = useSelector(state => state.player)
+	const dispatch = useDispatch()
+
+	const play = () => {
+		dispatch(PlayerActions.playSong())
+	}
+
+	const pause = () => {
+		dispatch(PlayerActions.pauseSong())
+	}
+
 	return (
 		<Container>
 			{!!player.currentSong && (
@@ -51,9 +63,16 @@ const Player = () => {
 					<button>
 						<img src={BackwardIcon} alt="backward" />
 					</button>
-					<button>
-						<img src={PlayIcon} alt="play" />
-					</button>
+					{!!player.currentSong && player.status === Sound.status.PLAYING ? (
+						<button onClick={pause}>
+							<img src={PauseIcon} alt="pause" />
+						</button>
+					) : (
+						<button onClick={play}>
+							<img src={PlayIcon} alt="play" />
+						</button>
+					)}
+
 					<button>
 						<img src={ForwardIcon} alt="forward" />
 					</button>
