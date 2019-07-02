@@ -48,7 +48,17 @@ const Player = () => {
 		dispatch(PlayerActions.playingSong(e))
 	}
 
+	const setPosition = percent => {
+		dispatch(PlayerActions.setSongPosition(percent))
+	}
+
+	const changePosition = percent => {
+		dispatch(PlayerActions.changeSongPosition(percent))
+	}
+
 	const msToTime = duration => {
+		if (!duration) return null
+
 		let seconds = parseInt((duration / 1000) % 60, 10)
 		const minutes = parseInt((duration / (1000 * 60)) % 60, 10)
 
@@ -59,6 +69,11 @@ const Player = () => {
 
 	const position = msToTime(player.position)
 	const duration = msToTime(player.duration)
+	const positionShow = msToTime(player.positionShow)
+	const progress = parseInt(
+		(player.positionShow || player.position) * (1000 / player.duration),
+		10
+	)
 
 	return (
 		<Container>
@@ -68,6 +83,7 @@ const Player = () => {
 					playStatus={player.status}
 					onFinishedPlaying={next}
 					onPlaying={e => playing(e)}
+					position={player.position}
 				/>
 			)}
 			<Current>
@@ -111,12 +127,16 @@ const Player = () => {
 					</button>
 				</Controls>
 				<Time>
-					<span>{position}</span>
+					<span>{positionShow || position}</span>
 					<ProgressSlider>
 						<Slider
 							railStyle={{ backgroundColor: '#404040', borderRadius: 10 }}
 							trackStyle={{ backgroundColor: '#1ED760' }}
 							handleStyle={{ border: 0 }}
+							max={1000}
+							onChange={value => changePosition(value / 1000)}
+							onAfterChange={value => setPosition(value / 1000)}
+							value={progress}
 						/>
 					</ProgressSlider>
 					<span>{duration}</span>
