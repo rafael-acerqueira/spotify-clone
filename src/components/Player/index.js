@@ -56,6 +56,10 @@ const Player = () => {
 		dispatch(PlayerActions.changeSongPosition(percent))
 	}
 
+	const setVolume = value => {
+		dispatch(PlayerActions.setVolume(value))
+	}
+
 	const msToTime = duration => {
 		if (!duration) return null
 
@@ -84,6 +88,7 @@ const Player = () => {
 					onFinishedPlaying={next}
 					onPlaying={e => playing(e)}
 					position={player.position}
+					volume={player.volume}
 				/>
 			)}
 			<Current>
@@ -149,7 +154,8 @@ const Player = () => {
 					railStyle={{ backgroundColor: '#404040', borderRadius: 10 }}
 					trackStyle={{ backgroundColor: '#FFF' }}
 					handleStyle={{ display: 'none' }}
-					value={100}
+					value={player.volume}
+					onChange={setVolume}
 				/>
 			</Volume>
 		</Container>
